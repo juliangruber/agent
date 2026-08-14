@@ -1,6 +1,6 @@
 # agent
 
-Run harnesses in Docker (for safety) and models on bare metal (for speed).
+Run harnesses in Docker (for safety) and local models on bare metal (for speed).
 
 ## Harnesses
 
