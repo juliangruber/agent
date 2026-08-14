@@ -1,0 +1,39 @@
+FROM node:22-slim
+
+# Install system utilities and Git
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    python3 \
+    python3-pip \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install OpenCode globally
+RUN npm install -g opencode-ai
+
+# Set up global OpenCode configuration inside the container
+RUN mkdir -p /root/.config/opencode && \
+    echo '{\n\
+  "$schema": "https://opencode.ai/config.json",\n\
+  "model": "ollama/qwen3.6",\n\
+  "provider": {\n\
+    "ollama": {\n\
+      "npm": "@ai-sdk/openai-compatible",\n\
+      "name": "Ollama",\n\
+      "options": {\n\
+        "baseURL": "http://host.docker.internal:11434/v1"\n\
+      },\n\
+      "models": {\n\
+        "qwen3.6": {\n\
+          "name": "qwen3.6"\n\
+        }\n\
+      }\n\
+    }\n\
+  }\n\
+}' > /root/.config/opencode/config.json
+
+WORKDIR /workspace
+
+# Default command launches OpenCode inside the container
+CMD ["opencode"]
