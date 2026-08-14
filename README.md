@@ -1,6 +1,6 @@
 # agent
 
-Setup for run harnesses in Docker (for safety) and models on bare metal (for speed).
+Run harnesses in Docker (for safety) and models on bare metal (for speed).
 
 Supports harnesses
 - [OpenCode](https://opencode.ai/)
