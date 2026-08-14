@@ -2,9 +2,11 @@
 
 Run harnesses in Docker (for safety) and models on bare metal (for speed).
 
-Supports harnesses
+## Harnesses
+
 - [OpenCode](https://opencode.ai/)
 - [Pi](https://pi.dev/)
+- Pull requests welcome!
 
 ## Usage
 
