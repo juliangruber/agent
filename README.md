@@ -65,5 +65,5 @@ Well, that's the age-old question! ❤️
     docker build -t pi-sandbox -f Dockerfile.pi .
     ```
 
-1. Add the contents of [agent.sh](./agent.sh) to your shell profile
+1. Add the contents of [agent.sh](./agent.sh) to your shell profile and reload
 
