@@ -4,12 +4,6 @@ Run harnesses in Docker (for safety) and local models on bare metal (for speed).
 
 The shell current folder is shared with the harness running in the docker container.
 
-## Harnesses
-
-- [OpenCode](https://opencode.ai/)
-- [Pi](https://pi.dev/)
-- Pull requests welcome!
-
 ## Usage
 
 ### `OpenCode`
@@ -50,6 +44,13 @@ $ pir "what is love"
 Well, that's the age-old question! ❤️
 [...]
 ```
+
+## Harnesses
+
+- [OpenCode](https://opencode.ai/)
+- [Pi](https://pi.dev/)
+- Pull requests welcome!
+
 
 ## Installation
 
