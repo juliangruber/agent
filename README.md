@@ -2,6 +2,8 @@
 
 Run harnesses in Docker (for safety) and local models on bare metal (for speed).
 
+The shell current folder is shared with the harness running in the docker container.
+
 ## Harnesses
 
 - [OpenCode](https://opencode.ai/)
