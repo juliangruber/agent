@@ -49,17 +49,21 @@ Well, that's the age-old question! ❤️
 
 ## Installation
 
-- Install [Docker](https://www.docker.com/)
-- Install [bat](https://github.com/sharkdp/bat)
-- Install [ollama](https://ollama.com/) and pull model `qwen3.6`
+### Prerequisites
+
+- [Docker](https://www.docker.com/)
+- [bat](https://github.com/sharkdp/bat)
+- [ollama](https://ollama.com/) and pull model `qwen3.6`
+
+### Setup
 
 1. Clone this repository
 1. Build the docker images:
 
-```console
-docker build -t opencode-sandbox -f Dockerfile.opencode .
-docker build -t pi-sandbox -f Dockerfile.pi .
-```
+    ```console
+    docker build -t opencode-sandbox -f Dockerfile.opencode .
+    docker build -t pi-sandbox -f Dockerfile.pi .
+    ```
 
 1. Add the contents of [./agent.sh](./agent.sh) to your shell profile
 
