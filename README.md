@@ -8,26 +8,43 @@ Supports harnesses
 
 ## Usage
 
-```console
-# OpenCode
+### `OpenCode`
 
-# Interactive session
+#### Interactive session
+
+```console
 $ cd workspace
 $ oc
+```
 
-# Single prompt
+#### Single prompt
+
+```console
 $ cd workspace
 $ ocr "what is love"
 
-# Pi
+> build · qwen3.6
 
-# Interactive session
+Haven't heard the good news?
+
+```
+
+### `Pi`
+
+#### Interactive session
+
+```console
 $ cd workspace
 $ pi
+```
 
-# Single prompt
+#### Single prompt
+
+```console
 $ cd workspace
 $ pir "what is love"
+Well, that's the age-old question! ❤️
+[...]
 ```
 
 ## Installation
