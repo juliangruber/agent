@@ -8,14 +8,14 @@ The shell current folder is shared with the harness running in the docker contai
 
 ### `OpenCode`
 
-#### Interactive session
+#### `oc` - Interactive session
 
 ```console
 $ cd workspace
 $ oc
 ```
 
-#### Single prompt
+#### `ocr` - Single prompt
 
 ```console
 $ cd workspace
@@ -29,14 +29,14 @@ Haven't heard the good news?
 
 ### `Pi`
 
-#### Interactive session
+#### `pi` - Interactive session
 
 ```console
 $ cd workspace
 $ pi
 ```
 
-#### Single prompt
+#### `pir` - Single prompt
 
 ```console
 $ cd workspace
