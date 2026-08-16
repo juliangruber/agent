@@ -83,17 +83,10 @@ $ export AGENT_MODEL=qwen3-coder
 
 ### Setup
 
-1. Pull the docker images:
-
-    ```console
-    docker pull ghcr.io/juliangruber/agent-opencode
-    docker pull ghcr.io/juliangruber/agent-pi
-    ```
-
 1. Add the contents of [agent.sh](./agent.sh) to your shell profile and reload
 
-Docker pulls the images on first use anyway, so the first step just gets the
-wait over with. Both are published for `linux/amd64` and `linux/arm64`.
+Docker pulls the images on first use. Both are published for `linux/amd64` and
+`linux/arm64`.
 
 ## Development
 
