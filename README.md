@@ -21,7 +21,7 @@ $ oc
 $ cd workspace
 $ ocr "what is love"
 
-> build · qwen3.6
+> build · qwen3.8
 
 Haven't heard the good news?
 
@@ -45,6 +45,27 @@ Well, that's the age-old question! ❤️
 [...]
 ```
 
+## Models
+
+Configure models through env vars:
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `AGENT_MODEL` | `qwen3.8` | Model id, as the endpoint knows it |
+| `AGENT_BASE_URL` | `http://host.docker.internal:11434/v1` | OpenAI-compatible endpoint |
+
+Per invocation:
+
+```console
+$ AGENT_MODEL=qwen3-coder ocr "what is love"
+```
+
+Or set a default in your shell profile:
+
+```console
+$ export AGENT_MODEL=qwen3-coder
+```
+
 ## Harnesses
 
 - [OpenCode](https://opencode.ai/)
@@ -58,7 +79,7 @@ Well, that's the age-old question! ❤️
 
 - [Docker](https://www.docker.com/)
 - [bat](https://github.com/sharkdp/bat)
-- [ollama](https://ollama.com/) and pull model `qwen3.6`
+- [ollama](https://ollama.com/) and at least one model, see [Models](#models)
 
 ### Setup
 
