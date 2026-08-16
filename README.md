@@ -45,6 +45,22 @@ Well, that's the age-old question! ❤️
 [...]
 ```
 
+## Installation
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/)
+- [bat](https://github.com/sharkdp/bat)
+- [ollama](https://ollama.com/) and at least one model
+
+### Setup
+
+Include [agent.sh](./agent.sh) in your shell profile and reload.
+
+```console
+. agent.sh
+```
+
 ## Models
 
 Configure models through env vars:
@@ -71,23 +87,6 @@ $ export AGENT_MODEL=qwen3-coder
 - [OpenCode](https://opencode.ai/)
 - [Pi](https://pi.dev/)
 - Pull requests welcome!
-
-
-## Installation
-
-### Prerequisites
-
-- [Docker](https://www.docker.com/)
-- [bat](https://github.com/sharkdp/bat)
-- [ollama](https://ollama.com/) and at least one model
-
-### Setup
-
-Include [agent.sh](./agent.sh) in your shell profile and reload.
-
-```console
-. agent.sh
-```
 
 ## Development
 
