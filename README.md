@@ -83,13 +83,18 @@ $ export AGENT_MODEL=qwen3-coder
 
 ### Setup
 
-1. Clone this repository
-1. Build the docker images:
+1. Include [agent.sh](./agent.sh) in your shell profile and reload
 
-    ```console
-    docker build -t opencode-sandbox -f Dockerfile.opencode .
-    docker build -t pi-sandbox -f Dockerfile.pi .
-    ```
+## Development
 
-1. Add the contents of [agent.sh](./agent.sh) to your shell profile and reload
+Build the images yourself, tagged like the published ones so the shell
+functions pick them up:
+
+```console
+$ docker build -t ghcr.io/juliangruber/agent-opencode -f Dockerfile.opencode .
+$ docker build -t ghcr.io/juliangruber/agent-pi -f Dockerfile.pi .
+```
+
+[.github/workflows/docker.yml](./.github/workflows/docker.yml) builds both
+images on every pull request and publishes them on every push to `main`.
 
