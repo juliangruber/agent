@@ -85,9 +85,6 @@ $ export AGENT_MODEL=qwen3-coder
 
 1. Add the contents of [agent.sh](./agent.sh) to your shell profile and reload
 
-Docker pulls the images on first use. Both are published for `linux/amd64` and
-`linux/arm64`.
-
 ## Development
 
 Build the images yourself, tagged like the published ones so the shell
