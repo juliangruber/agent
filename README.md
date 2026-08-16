@@ -83,7 +83,7 @@ $ export AGENT_MODEL=qwen3-coder
 
 ### Setup
 
-1. Add the contents of [agent.sh](./agent.sh) to your shell profile and reload
+1. Include [agent.sh](./agent.sh) in your shell profile and reload
 
 ## Development
 
