@@ -79,22 +79,20 @@ $ export AGENT_MODEL=qwen3-coder
 
 - [Docker](https://www.docker.com/)
 - [bat](https://github.com/sharkdp/bat)
-- [ollama](https://ollama.com/) and at least one model, see [Models](#models)
+- [ollama](https://ollama.com/) and at least one model
 
 ### Setup
 
-1. Include [agent.sh](./agent.sh) in your shell profile and reload
+Include [agent.sh](./agent.sh) in your shell profile and reload.
+
+```console
+. agent.sh
+```
 
 ## Development
-
-Build the images yourself, tagged like the published ones so the shell
-functions pick them up:
 
 ```console
 $ docker build -t ghcr.io/juliangruber/agent-opencode -f Dockerfile.opencode .
 $ docker build -t ghcr.io/juliangruber/agent-pi -f Dockerfile.pi .
 ```
-
-[.github/workflows/docker.yml](./.github/workflows/docker.yml) builds both
-images on every pull request and publishes them on every push to `main`.
 
