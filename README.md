@@ -50,7 +50,6 @@ Well, that's the age-old question! ❤️
 ### Prerequisites
 
 - [Docker](https://www.docker.com/)
-- [bat](https://github.com/sharkdp/bat)
 - [ollama](https://ollama.com/) and at least one model
 
 ### Setup
