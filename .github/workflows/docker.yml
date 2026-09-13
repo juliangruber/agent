@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        harness: [opencode, pi]
+        harness: [opencode, pi, juliangruber-harness]
 
     steps:
       - uses: actions/checkout@v7

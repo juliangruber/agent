@@ -45,6 +45,24 @@ Well, that's the age-old question! ❤️
 [...]
 ```
 
+### `Harness`
+
+A general purpose agent harness with fair research, from [juliangruber/harness](https://github.com/juliangruber/harness). Runs with `--unsafe` in the container, since Docker is the sandbox.
+
+#### `ha` - Interactive session
+
+```console
+$ cd workspace
+$ ha
+```
+
+#### `har` - Single prompt
+
+```console
+$ cd workspace
+$ har "what is love"
+```
+
 ## Installation
 
 ### Prerequisites
@@ -85,6 +103,7 @@ $ export AGENT_MODEL=qwen3-coder
 
 - [OpenCode](https://opencode.ai/)
 - [Pi](https://pi.dev/)
+- [Harness](https://github.com/juliangruber/harness)
 - Pull requests welcome!
 
 ## Development
@@ -92,5 +111,6 @@ $ export AGENT_MODEL=qwen3-coder
 ```console
 $ docker build -t ghcr.io/juliangruber/agent-opencode -f Dockerfile.opencode .
 $ docker build -t ghcr.io/juliangruber/agent-pi -f Dockerfile.pi .
+$ docker build -t ghcr.io/juliangruber/agent-juliangruber-harness -f Dockerfile.juliangruber-harness .
 ```
 
