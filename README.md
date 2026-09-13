@@ -114,3 +114,17 @@ $ docker build -t ghcr.io/juliangruber/agent-pi -f Dockerfile.pi .
 $ docker build -t ghcr.io/juliangruber/agent-juliangruber-harness -f Dockerfile.juliangruber-harness .
 ```
 
+## Tests
+
+```console
+$ sh test/run.sh
+```
+
+Three layers:
+
+1. **Entrypoints** - shellcheck, and each `entrypoint.*.sh` run in a sandbox to check it writes the right config, defaults `AGENT_BASE_URL`, and injects the model flag / `--unsafe`. No Docker, runs in seconds.
+2. **Images** - builds each `Dockerfile.*` and checks the agent binary is installed.
+3. **Smoke** - runs each image against a fake OpenAI-compatible endpoint (`test/fake-llm.mjs`, needs node) and asserts a full prompt round trip returns the answer.
+
+Layers 2 and 3 need Docker and are skipped when it's unavailable or `SKIP_DOCKER=1`. CI runs all three. Add a harness by adding a row to `harness_table` in `test/lib.sh`.
+

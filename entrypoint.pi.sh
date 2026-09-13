@@ -4,7 +4,7 @@ set -eu
 MODEL="${AGENT_MODEL:-qwen3.8}"
 BASE_URL="${AGENT_BASE_URL:-http://host.docker.internal:11434/v1}"
 
-CONFIG=/root/.pi/agent/models.json
+CONFIG="${HOME:-/root}/.pi/agent/models.json"
 
 mkdir -p "$(dirname "$CONFIG")"
 cat > "$CONFIG" <<EOF
