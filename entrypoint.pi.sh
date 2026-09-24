@@ -1,6 +1,11 @@
 #!/bin/sh
 set -eu
 
+# gh reads GH_TOKEN, so hand it the token from the agent namespaced variable
+if [ -n "${AGENT_GH_TOKEN:-}" ]; then
+  export GH_TOKEN="$AGENT_GH_TOKEN"
+fi
+
 MODEL="${AGENT_MODEL:-qwen3.8}"
 BASE_URL="${AGENT_BASE_URL:-http://host.docker.internal:11434/v1}"
 

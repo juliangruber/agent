@@ -19,8 +19,9 @@ fi
 
 # Runs an entrypoint in a clean sandbox and captures what its exec'd command
 # recorded. Model and base url are passed explicitly (empty means unset) via a
-# fresh env, so nothing leaks between cases.
+# fresh env, so nothing leaks between cases. Set GH to pass AGENT_GH_TOKEN.
 # Usage: run_entrypoint SCRIPT MODEL BASEURL CMD [ARGS...]
+GH=
 run_entrypoint () {
   script=$1 model=$2 base=$3; shift 3
   work=$(mktemp -d)
@@ -30,13 +31,13 @@ run_entrypoint () {
   for bin in opencode pi harness; do
     cat > "$work/bin/$bin" <<STUB
 #!/bin/sh
-{ printf 'ARGS:%s\n' "\$*"; printf 'BASE_URL:%s\n' "\${AGENT_BASE_URL:-}"; } > "$rec"
+{ printf 'ARGS:%s\n' "\$*"; printf 'BASE_URL:%s\n' "\${AGENT_BASE_URL:-}"; printf 'GH_TOKEN:%s\n' "\${GH_TOKEN:-}"; } > "$rec"
 STUB
     chmod +x "$work/bin/$bin"
   done
   # shellcheck disable=SC2086
   env -i HOME="$work" PATH="$work/bin:$PATH" \
-    ${model:+AGENT_MODEL=$model} ${base:+AGENT_BASE_URL=$base} \
+    ${model:+AGENT_MODEL=$model} ${base:+AGENT_BASE_URL=$base} ${GH:+AGENT_GH_TOKEN=$GH} \
     sh "$ROOT/$script" "$@" >/dev/null 2>&1 || true
   RECORD=$(cat "$rec" 2>/dev/null || echo)
   CONFIG_OC="$work/.config/opencode/config.json"
@@ -64,5 +65,18 @@ assert_contains "harness default base url" "$RECORD" 'BASE_URL:http://host.docke
 # A non-agent command passes straight through
 run_entrypoint entrypoint.juliangruber-harness.sh "" "" echo hi
 assert_eq "harness passes other commands through" "" "$RECORD"
+
+echo "== gh token =="
+table=$(mktemp)
+harness_table > "$table"
+while IFS='|' read -r suffix bin _; do
+  GH=secret
+  run_entrypoint "entrypoint.$suffix.sh" "" "" "$bin"
+  assert_contains "$suffix maps AGENT_GH_TOKEN to GH_TOKEN" "$RECORD" 'GH_TOKEN:secret'
+  GH=
+  run_entrypoint "entrypoint.$suffix.sh" "" "" "$bin"
+  assert_eq "$suffix leaves GH_TOKEN unset without it" "GH_TOKEN:" "$(printf '%s' "$RECORD" | grep '^GH_TOKEN:')"
+done < "$table"
+rm -f "$table"
 
 finish
