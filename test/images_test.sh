@@ -1,5 +1,5 @@
 #!/bin/sh
-# Layer 2: build each image and assert its agent binary is installed. Needs
+# Layer 2: build each image and assert its agent binary and gh are installed. Needs
 # Docker. Minutes per image, no model required.
 set -eu
 . "$(dirname -- "$0")/lib.sh"
@@ -18,6 +18,11 @@ while IFS='|' read -r suffix bin _; do
   fi
   path=$(docker run --rm --entrypoint sh "agent-$suffix:test" -c "command -v $bin" 2>/dev/null || echo)
   if [ -n "$path" ]; then pass "$suffix has $bin ($path)"; else fail "$suffix has $bin"; fi
+  if docker run --rm --entrypoint gh "agent-$suffix:test" --version >/dev/null 2>&1; then
+    pass "$suffix has gh"
+  else
+    fail "$suffix has gh"
+  fi
 done < "$table"
 
 rm -f "$table"
